@@ -1,0 +1,39 @@
+[
+  { "date": "2026-01-01", "type": "F",  "name": "New Year" },
+  { "date": "2026-01-15", "type": "RF", "name": "Pongal / Uttarayana" },
+  { "date": "2026-01-23", "type": "OH", "name": "Saraswati Pooja / Basant Panchami" },
+  { "date": "2026-01-26", "type": "F",  "name": "Republic Day" },
+  { "date": "2026-02-15", "type": "OH", "name": "Maha Shivratri" },
+
+  { "date": "2026-03-04", "type": "OH", "name": "Holi" },
+  { "date": "2026-03-08", "type": "OH", "name": "Rang Panchami" },
+  { "date": "2026-03-19", "type": "RF", "name": "Gudi Padwa / Ugadi / Telugu New Year" },
+  { "date": "2026-03-20", "type": "OH", "name": "Eid-Ul-Fitr" },
+  { "date": "2026-03-31", "type": "OH", "name": "Mahaveer Jayanti" },
+ 
+  { "date": "2026-04-03", "type": "OH", "name": "Good Friday" },
+  { "date": "2026-04-14", "type": "OH", "name": "Tamil New Year / Ambedkar Jayanti" },
+ 
+  { "date": "2026-05-01", "type": "RF", "name": "Maharashtra Day / May Day / Labour Day" },
+  { "date": "2026-05-28", "type": "OH", "name": "Eid-Ul-Adha / Bakrid" },
+ 
+  { "date": "2026-08-15", "type": "F",  "name": "Independence Day" },
+  { "date": "2026-08-26", "type": "OH", "name": "Eid Milad-Un-Nabi" },
+  { "date": "2026-08-28", "type": "OH", "name": "Raksha Bandhan" },
+ 
+  { "date": "2026-09-04", "type": "OH", "name": "Janmashtami" },
+  { "date": "2026-09-14", "type": "OH", "name": "Ganesh Chaturthi" },
+  { "date": "2026-09-25", "type": "OH", "name": "Ananta Chaturdashi / Ganesh Visarjan" },
+ 
+  { "date": "2026-10-02", "type": "F",  "name": "Gandhi Jayanti" },
+  { "date": "2026-10-19", "type": "OH", "name": "Mahanavami" },
+  { "date": "2026-10-20", "type": "F",  "name": "Dussehra / Vijaya Dashami" },
+ 
+ 
+  { "date": "2026-11-09", "type": "OH", "name": "Deepawali (Govardhan Pooja)" },
+  { "date": "2026-11-24", "type": "OH", "name": "Guru Nanak Jayanti" },
+ 
+  { "date": "2026-12-25", "type": "OH", "name": "Christmas" }
+]
+ 
+ 

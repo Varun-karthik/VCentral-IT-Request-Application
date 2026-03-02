@@ -1,0 +1,18 @@
+<mvc:View controllerName="vcentral.controller.Login"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page id="page" showNavButton="true" title="VCentral" navButtonPress="navPress">
+    <FlexBox direction="Column"   alignItems="Center" class="sapUiLargeMarginTop" >
+    <Input id="username" placeholder="Enter User Name" valueLiveUpdate="true" width="300px" required="true" class="sapUiSmallMarginTop sapUiSmallMarginBottom " ></Input>
+    <Input id="password" placeholder="Enter Password" valueLiveUpdate="true" width="300px" required="true" class="sapUiSmallMarginBottom" ></Input>
+    <ComboBox id="roleSelect" width="300px" class="sapUiSmallMarginBottom" >
+    <core:Item text="User" key="user"></core:Item>
+    <core:Item text="Manager" key="manager"></core:Item>
+    </ComboBox>
+    <Button text="Login" type="Emphasized" press="onLoginPress" width="300px"></Button>
+    </FlexBox>
+
+    
+    </Page>
+</mvc:View>

@@ -1,0 +1,80 @@
+{
+  "historyTimesheets": [
+    {
+      "weekId": "2026-01-12_to_2026-01-18",
+      "employeeId": "1102801",
+      "name": "Varun",
+      "weekStart": "2026-01-12",
+      "weekEnd": "2026-01-18",
+      "weekLabel": "12 Jan to 18 Jan",
+      "entries": [
+        {
+          "taskName": "BU15 Pool - Training",
+          "hours": {
+            "monday": 8,
+            "tuesday": 7,
+            "wednesday": 6,
+            "thursday": 8,
+            "friday": 7,
+            "saturday": 0,
+            "sunday": 0
+          },
+          "totalHours": 36,
+          "submitted": true
+        }
+      ],
+      "scheduledHours": 45,
+      "totalWeekHours": 36,
+      "status": "Approved"
+    },
+    {
+      "weekId": "2026-01-05_to_2026-01-11",
+      "employeeId": "1102802",
+      "name": "Karthik",
+      "weekStart": "2026-01-05",
+      "weekEnd": "2026-01-11",
+      "weekLabel": "05 Jan to 11 Jan",
+      "entries": [
+        {
+          "taskName": "BU15 Pool - Development",
+          "hours": {
+            "monday": 9,
+            "tuesday": 9,
+            "wednesday": 8,
+            "thursday": 9,
+            "friday": 8,
+            "saturday": 0,
+            "sunday": 0
+          },
+          "totalHours": 43,
+          "submitted": true
+        }
+      ],
+      "scheduledHours": 45,
+      "totalWeekHours": 43,
+      "status": "Rejected"
+    }
+  ],
+  
+  "historyLeaves": [
+    {
+      "leaveId": "L001",
+      "employeeId": "1102801",
+      "name": "Varun",
+      "startDate": "2026-01-10",
+      "endDate": "2026-01-12",
+      "validDays": 3,
+      "status": "Approved"
+    },
+    {
+      "leaveId": "L002",
+      "employeeId": "1102802",
+      "name": "Karthik",
+      "startDate": "2026-01-15",
+      "endDate": "2026-01-16",
+      "validDays": 2,
+      "status": "Rejected"
+    }
+  ]
+
+}

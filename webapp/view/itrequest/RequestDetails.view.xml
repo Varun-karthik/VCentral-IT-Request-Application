@@ -1,0 +1,63 @@
+<mvc:View xmlns:form="sap.ui.layout.form" controllerName="vcentral.controller.itrequest.RequestDetails"
+    displayBlock="true"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page title="Request Details" showNavButton="true" navButtonPress="back">
+    <headerContent>
+    <ToolbarSpacer ></ToolbarSpacer>
+    <HBox gap="3px" >
+    <Button icon="sap-icon://edit" id="edit" type="Transparent" press="Edit"></Button>
+    <Button icon="sap-icon://save" id="save" type="Emphasized"  visible="false" press="Save"></Button>
+    <Button icon="sap-icon://cancel" id="cancel" type="Transparent" visible="false" press="Cancel"></Button>
+    </HBox>
+    </headerContent>
+   
+    <form:SimpleForm width="97%" id="simpleForm" class="sapUiSmallMargin ">
+    <Label text="ID" />
+    <Text text="{RequestModel>RequestId}"   />
+    
+    <Label text="Category" />
+    <VBox >
+    <Text visible="true" id="categoryText" text="{RequestModel>Category}" />
+    <ComboBox  width="100%" visible="false" id="category2" selectedKey="{RequestModel>Category}">
+    <core:Item text="Hardware" key="Hardware"></core:Item>
+    <core:Item text="Software" key="Software"></core:Item>
+    <core:Item text="Access" key="Access"></core:Item>
+    <core:Item text="Network" key="Network"></core:Item>
+    </ComboBox>
+    </VBox>
+
+    <Label text="Priority" />
+    <VBox>
+    <Text text="{RequestModel>Priority}" id="priorityText" />
+    <ComboBox visible="false" width="100%" id="priority2" selectedKey="{RequestModel>Priority}">
+    <core:Item text="Low" key="Low"></core:Item>
+    <core:Item text="Medium" key="Medium"></core:Item>
+    <core:Item text="High" key="High"></core:Item>
+    </ComboBox>
+    </VBox>
+
+    <Label text="Status" />
+    <VBox>
+    <Text text="{RequestModel>Status}" id="statusText" />
+    <ComboBox visible="false" width="100%" id="status" selectedKey="{RequestModel>Status}">
+    <core:Item text="Open" key="Open"></core:Item>
+    <core:Item text="In Progress" key="In Progress"></core:Item>
+    <core:Item text="Closed" key="Closed"></core:Item>
+    </ComboBox>
+    </VBox>
+
+    <Label text="Created On" />
+    <Text id="dateText" text="{RequestModel>CreatedOn}" />
+
+    <Label text="Description: " />
+    <VBox >
+    <Text text="{RequestModel>Description}" id="descText" />
+    <TextArea width="100%" value="{RequestModel>Description}" visible="false" id="descTextArea" rows="4"/>
+    </VBox>
+    </form:SimpleForm>
+
+    <Button text="Delete Record" type="Reject" icon="sap-icon://delete" press="delete" class="sapUiSmallMargin"></Button>
+    </Page>
+</mvc:View>

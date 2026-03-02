@@ -1,0 +1,20 @@
+<mvc:View controllerName="vcentral.controller.HomePage"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page title="Home Page">
+    <GenericTile class="sapUiSmallMarginBegin sapUiSmallMarginTop" 
+    backgroundImage="/images/it_support_bg.jpg"
+    additionalTooltip="IT Support Request"
+    press="ITService_press" frameType="OneByOne"> 
+    </GenericTile>
+
+    <GenericTile class="sapUiSmallMarginBegin sapUiSmallMarginTop" 
+    backgroundImage="/images/vcentral.png" 
+    header="VCentral" press="VCentral_press"
+     > 
+    <TileContent footer="VCentral Stramlines projects by enabling associates to manage timesheets">
+    </TileContent>
+    </GenericTile>
+    </Page>
+</mvc:View>

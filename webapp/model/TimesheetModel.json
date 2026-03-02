@@ -1,0 +1,154 @@
+{
+  "timesheets": [
+    {
+      "employeeId": "1102801",
+      "name": "Varun",
+      "weekId": "2026-01-25_to_2026-02-01",
+      "weekStart": "2026-01-25",
+      "weekEnd": "2026-02-01",
+      "weekLabel": "25 Jan to 01 Feb",
+      "entries": [
+        {
+          "taskName": "BU15 Pool - Training",
+          "hours": {
+            "monday": "",
+            "tuesday": "",
+            "wednesday": "",
+            "thursday": "",
+            "friday": "",
+            "saturday": "0",
+            "sunday": "0"
+          },
+          "totalHours": 0,
+          "submitted": false
+        }
+      ],
+      "scheduledHours": 45,
+      "totalWeekHours": 0,
+      "status": "Draft",
+      "annualQuota": 24, 
+      "remainingAfterRequest": 0, 
+      "daysSelected": 0
+    },
+    {
+      "employeeId": "1102802",
+      "name": "Karthik",
+      "weekId": "2026-01-25_to_2026-02-01",
+      "weekStart": "2026-01-25",
+      "weekEnd": "2026-02-01",
+      "weekLabel": "25 Jan to 01 Feb",
+      "entries": [
+        {
+          "taskName": "BU15 Pool - Development",
+          "hours": {
+            "monday": "",
+            "tuesday": "",
+            "wednesday": "",
+            "thursday": "",
+            "friday": "",
+            "saturday": "0",
+            "sunday": "0"
+          },
+          "totalHours": 0,
+          "submitted": false
+        }
+      ],
+      "scheduledHours": 45,
+      "totalWeekHours": 0,
+      "status": "Draft",
+      "annualQuota": 24, 
+      "remainingAfterRequest": 0, 
+      "daysSelected": 0
+    },
+    {
+      "employeeId": "1102803",
+      "name": "Surya",
+      "weekId": "2026-01-25_to_2026-02-01",
+      "weekStart": "2026-01-25",
+      "weekEnd": "2026-02-01",
+      "weekLabel": "25 Jan to 01 Feb",
+      "entries": [
+        {
+          "taskName": "",
+          "hours": {
+            "monday": "",
+            "tuesday": "",
+            "wednesday": "",
+            "thursday": "",
+            "friday": "",
+            "saturday": "0",
+            "sunday": "0"
+          },
+          "totalHours": 0,
+          "submitted": false
+        }
+      ],
+      "scheduledHours": 45,
+      "totalWeekHours": 0,
+      "status": "Draft",
+      "annualQuota": 24, 
+      "remainingAfterRequest": 0, 
+      "daysSelected": 0
+    },
+    {
+      "employeeId": "1102804",
+      "name": "Chaitanya",
+      "weekId": "2026-01-25_to_2026-02-01",
+      "weekStart": "2026-01-25",
+      "weekEnd": "2026-02-01",
+      "weekLabel": "25 Jan to 01 Feb",
+      "entries": [
+        {
+          "taskName": "",
+          "hours": {
+            "monday": "",
+            "tuesday": "",
+            "wednesday": "",
+            "thursday": "",
+            "friday": "",
+            "saturday": "0",
+            "sunday": "0"
+          },
+          "totalHours": 0,
+          "submitted": false
+        }
+      ],
+      "scheduledHours": 45,
+      "totalWeekHours": 0,
+      "status": "Draft",
+      "annualQuota": 24, 
+      "remainingAfterRequest": 0, 
+      "daysSelected": 0
+    },
+    {
+      "employeeId": "1102805",
+      "name": "Fardeen",
+      "weekId": "2026-01-25_to_2026-02-01",
+      "weekStart": "2026-01-25",
+      "weekEnd": "2026-02-01",
+      "weekLabel": "25 Jan to 01 Feb",
+      "entries": [
+        {
+          "taskName": "",
+          "hours": {
+            "monday": "",
+            "tuesday": "",
+            "wednesday": "",
+            "thursday": "",
+            "friday": "",
+            "saturday": "0",
+            "sunday": "0"
+          },
+          "totalHours": 0,
+          "submitted": false
+        }
+      ],
+      "scheduledHours": 45,
+      "totalWeekHours": 0,
+      "status": "Draft",
+      "annualQuota": 24, 
+      "remainingAfterRequest": 0, 
+      "daysSelected": 0
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" controllerName="vcentral.controller.itrequest.NotificationPage"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page title="Notification Settings" showNavButton="true" navButtonPress="back">
+    <!-- <form:SimpleForm class="sapUiSmallMargin"> -->
+    <Panel class="sapUiSmallMargin" headerText="Email Notifictions"  width="97%" expandable="true" expanded="true">
+    <form:SimpleForm  >
+    
+    <Label text="Enable Email Notifications" class="sapUiTinyMarginTop" ></Label>
+    <VBox >
+    <Switch change="stateChange"  state="false"></Switch>
+    </VBox>
+    
+    
+    <Label text="Email Address " required="true" class="sapUiTinyMarginTop" ></Label>
+    <VBox >
+    <Input liveChange="email" ></Input>
+    </VBox>
+    
+    <Label text="Notification Frequency " class="sapUiTinyMarginTop" ></Label>
+    <VBox >
+    <ComboBox id="combobox" selectedKey="Weekly" enabled="false" width="100%">
+    <core:Item key="Daily" text="Daily"></core:Item>
+    <core:Item key="Weekly" text="Weekly"></core:Item>
+    <core:Item key="Monthly" text="Monthly"></core:Item>
+    <core:Item key="Yearly" text="Yearly"></core:Item>
+    </ComboBox>
+    </VBox>
+    </form:SimpleForm>
+    </Panel>
+    <Panel class="sapUiSmallMargin" headerText="Notification Types" width="97%" expandable="true" expanded="true">
+        <List>
+
+            <CustomListItem>
+                <VBox class="sapUiSmallMarginBegin">
+                    <Title text="New Request Cancelled" 
+                        class="sapUiSmallMarginBegin sapUiTinyMarginTop"/>
+                    <Text text="Receive Email when you create a new request" 
+                        class="sapUiSmallMarginBegin sapUiTinyMarginTop"/>
+                    <HBox>
+                        <Switch state="true" class="sapUiSmallMarginBegin sapUiTinyMarginTop"/>
+                        <Text text="Send notifications when enabled" 
+                            class="sapUiSmallMarginBegin sapUiTinyMarginTop"/>
+                    </HBox>
+                </VBox>
+            </CustomListItem>
+
+            <CustomListItem>
+                <VBox class="sapUiSmallMarginBegin">
+                    <Title text="Status Updates" 
+                        class="sapUiSmallMarginBegin sapUiTinyMarginTop"/>
+                    <Text text="Receive Email when request status changes" 
+                        class="sapUiSmallMarginBegin sapUiTinyMarginTop"/>
+                    <HBox>
+                        <Switch state="true" class="sapUiSmallMarginBegin sapUiTinyMarginTop"/>
+                        <Text text="Send notifications when enabled" 
+                            class="sapUiSmallMarginBegin sapUiTinyMarginTop"/>
+                    </HBox>
+                </VBox>
+            </CustomListItem>
+
+            <CustomListItem>
+                <VBox class="sapUiSmallMarginBegin">
+                    <Title text="Request Assignment" 
+                        class="sapUiSmallMarginBegin sapUiTinyMarginTop"/>
+                    <Text text="Receive Email when assigned to a request" 
+                        class="sapUiSmallMarginBegin sapUiTinyMarginTop"/>
+                    <HBox>
+                        <Switch state="true" class="sapUiSmallMarginBegin sapUiTinyMarginTop"/>
+                        <Text text="Send notifications when enabled" 
+                            class="sapUiSmallMarginBegin sapUiTinyMarginTop"/>
+                    </HBox>
+                </VBox>
+            </CustomListItem>
+        </List>
+    </Panel>
+    <Panel class="sapUiSmallMargin" headerText="Test Notifications" width="97%" expandable="true" expanded="true">
+    <VBox class="sapUiSmallMarginBegin">
+    <Text text="Send a test notifiction to verify your settings" class="sapUiSmallMarginBegin sapUiTinyMarginTop"></Text> 
+    <Button text="Send Test Notification" type="Emphasized" press="test" class="sapUiSmallMarginBegin sapUiTinyMarginTop"></Button>        
+    </VBox>
+    </Panel>
+
+
+    <!-- </form:SimpleForm> -->
+    </Page>
+</mvc:View>

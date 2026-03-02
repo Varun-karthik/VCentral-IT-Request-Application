@@ -1,0 +1,54 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog id="HelpDialog" title="Contact Support">
+       <VBox class="sapUiSmallMargin">
+                <!-- IT Support -->
+                <VBox class="sapUiSmallMarginBottom">
+                    <Title text="IT Support" level="H4" class="sapUiTinyMarginBottom" />
+                    <HBox class="sapUiSmallMarginBegin">
+                        <Label text="Email:" width="80px" />
+                        <Link text="helpdesk@yash.com" href="mailto:helpdesk@yash.com" class="sapUiTinyMarginBegin" />
+                    </HBox>
+                    <HBox class="sapUiSmallMarginBegin">
+                        <Label text="Phone:" width="80px" />
+                        <Text text="+1 (555) 123-4567 (Ext: 4444)" class="sapUiTinyMarginBegin" />
+                    </HBox>
+                    <Text text="For hardware, software, and system issues" class="sapUiTinyMarginBegin sapUiTinyMarginTop" />
+                </VBox>
+                
+                <!-- HR Support -->
+                <VBox class="sapUiSmallMarginBottom">
+                    <Title text="HR Support" level="H4" class="sapUiTinyMarginBottom" />
+                    <HBox class="sapUiSmallMarginBegin">
+                        <Label text="Email:" width="80px" />
+                        <Link text="hr@yash.com" href="mailto:hr@yash.com" class="sapUiTinyMarginBegin" />
+                    </HBox>
+                    <HBox class="sapUiSmallMarginBegin">
+                        <Label text="Phone:" width="80px" />
+                        <Text text="+1 (555) 123-4568 (Ext: 5555)" class="sapUiTinyMarginBegin" />
+                    </HBox>
+                    <Text text="For payroll, leaves, and policy queries" class="sapUiTinyMarginBegin sapUiTinyMarginTop" />
+                </VBox>
+                
+                <!-- Emergency -->
+                <VBox class="sapUiSmallMarginBottom">
+                    <Title text="Emergency Contact (24x7)" level="H4" class="sapUiTinyMarginBottom" />
+                    <HBox class="sapUiSmallMarginBegin">
+                        <Label text="Hotline:" width="80px" />
+                        <Text text="+1 (800) 555-EMRG (3674)" class="sapUiTinyMarginBegin" />
+                    </HBox>
+                    <HBox class="sapUiSmallMarginBegin">
+                        <Label text="Email:" width="80px" />
+                        <Link text="emergency@yash.com" href="mailto:emergency@yash.com" class="sapUiTinyMarginBegin" />
+                    </HBox>
+                    <Text text="For critical system outages only" class="sapUiTinyMarginBegin sapUiTinyMarginTop" />
+                </VBox>
+            </VBox>
+
+        
+
+        <endButton>
+            <Button text="OK" type="Emphasized" press="onOK" />
+        </endButton>
+
+    </Dialog>
+</core:FragmentDefinition>

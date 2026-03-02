@@ -1,0 +1,94 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+xmlns:cards="sap.f.cards" 
+    xmlns:f="sap.f" 
+    controllerName="vcentral.controller.users.Timesheet"
+    xmlns:u="sap.ui.unified">
+<Page >
+    <VBox class="sapUiSmallMargin">
+        <Title text="Current Week Timesheet" level="H2" />
+        <ObjectStatus text="{TimesheetModel>/currentTimesheet/weekLabel}" state="Information" />
+        
+        <Title text="Status"></Title>   
+        <ObjectStatus text="{TimesheetModel>/currentTimesheet/status}"
+              state="{= ${TimesheetModel>/currentTimesheet/status} === 'Approved' ? 'Success' :
+                       ${TimesheetModel>/currentTimesheet/status} === 'Rejected' ? 'Error' :
+                       ${TimesheetModel>/currentTimesheet/status} === 'Pending' ? 'Warning' : 'Information'}" />
+        <Table id="timesheetTableq"  items="{TimesheetModel>/currentTimesheet/entries}">
+            <columns>
+                <Column><Text text="Mon" /></Column>
+                <Column><Text text="Tue" /></Column>
+                <Column><Text text="Wed" /></Column>
+                <Column><Text text="Thu" /></Column>
+                <Column><Text text="Fri" /></Column>
+                <Column><Text text="Sat" /></Column>
+                <Column><Text text="Sun" /></Column>
+                <Column><Text text="Total" /></Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Input value="{TimesheetModel>hours/monday}" change=".onHoursChange" />
+                        <Input value="{TimesheetModel>hours/tuesday}" change=".onHoursChange" />
+                        <Input value="{TimesheetModel>hours/wednesday}" change=".onHoursChange" />
+                        <Input value="{TimesheetModel>hours/thursday}" change=".onHoursChange" />
+                        <Input value="{TimesheetModel>hours/friday}" change=".onHoursChange" />
+                        <Input value="{TimesheetModel>hours/saturday}" editable="false" change=".onHoursChange" />
+                        <Input value="{TimesheetModel>hours/sunday}" editable="false" change=".onHoursChange" />
+                        <Text text="{TimesheetModel>totalHours}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+
+        <HBox class="sapUiSmallMarginTop" gap="20px">
+            <Button text="Save Draft" press=".onSaveDraft"  type="Emphasized" />
+            <Button text="Submit"
+        press="onSubmitTimesheet"
+        type="Accept"
+         />
+         <!-- enabled="{= ${TimesheetModel>/currentTimesheet/status} === 'Pending'}" -->
+
+        </HBox>
+    </VBox>
+
+    
+    
+
+    <Panel class="sapUiSmallMargin" headerText="Leave Calender" expanded="true" expandAnimation="false" expandable="false">
+    <FlexBox direction="Row" class="sapUiSmallMargin">
+    <f:Card  class=" sapUiTinyMarginTop sapUiSmallMarginRight ">
+    <f:content>
+    <u:Calendar id="calendar" months="1" select="calanderSelect" firstDayOfWeek="-1" intervalSelection="true" legend="legend"/>
+    </f:content>
+    </f:Card>
+    
+    <f:Card class="sapUiSmallMargin"> 
+    <f:content>
+    <FlexBox direction="Column">
+    <u:CalendarLegend id="legend">
+    <u:items>
+        <u:CalendarLegendItem type="Type01" text="Fixed Holiday"/>
+        <u:CalendarLegendItem type="Type02" text="Regional Fixed Holiday"/>
+        <u:CalendarLegendItem type="Type03" text="Optional Holiday"/>
+        <u:CalendarLegendItem type="Type04" text="Approved Leave"/> 
+        <u:CalendarLegendItem type="Type05" text="Rejected Leave"/> 
+        <u:CalendarLegendItem type="Type06" text="Pending Leave"/>
+    </u:items>
+    </u:CalendarLegend>
+
+    </FlexBox>
+    
+    </f:content>
+    </f:Card>
+    </FlexBox>
+    <Button class="sapUiSmallMargin" text="Create Absence" press="absence" type="Emphasized" ></Button>
+    </Panel>
+
+    <footer>
+    <Toolbar >
+    <ToolbarSpacer ></ToolbarSpacer>
+    <Button text="Previous leaves info" type="Emphasized" press="create_absence" />
+    </Toolbar>
+    </footer>
+    </Page>
+</mvc:View>

@@ -1,0 +1,43 @@
+<mvc:View xmlns:core="sap.ui.core" controllerName="vcentral.controller.itrequest.dashboard"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page  title="IT Request" showNavButton="true" navButtonPress="press">
+    <FlexBox direction="Column" class="sapUiSmallMarginBegin sapUiLargeMarginBottom sapUiSmallMarginTop ">
+    <Title text="IT Service Request Portal" class="sapUiSmallMarginBottom"></Title>
+    <Text text="Submit and Track IT Support Requests. Get real-time updates on ticket status and resolution progress"></Text>
+    </FlexBox>
+   
+    <GenericTile class="sapUiLargeMarginBegin sapUiSmallMarginTop " header="Create Ticket"
+				 subheader="New Ticket" press="createTicket">
+		<TileContent>
+			<ImageContent src="sap-icon://add"  />
+		</TileContent>
+	</GenericTile>
+    <GenericTile class="sapUiSmallMarginBegin sapUiSmallMarginTop " header="View My Requests"
+				 subheader="Manage Tickets" press="viewRequests">
+		<TileContent>
+			<ImageContent src="/images/to-do.png" />
+		</TileContent>
+	</GenericTile>
+    <GenericTile class="sapUiSmallMarginBegin sapUiSmallMarginTop " header="Statistics"
+				 subheader="View Analytics" press="StatisticsPress">
+		<TileContent>
+			<ImageContent src="/images/statistics.png" />
+		</TileContent>
+	</GenericTile>
+    <GenericTile class="sapUiSmallMarginBegin sapUiSmallMarginTop " header="Notifications"
+				 subheader="Configure Alerts" press="NotifictionPress">
+		<TileContent>
+			<ImageContent src="/images/notification.png" />
+		</TileContent>
+	</GenericTile>
+    <GenericTile class="sapUiSmallMarginBegin sapUiSmallMarginTop tileLayout" header="Help"
+				 subheader="Get Assistance" press="help">
+		<TileContent>
+			<ImageContent src="sap-icon://sys-help" />
+		</TileContent>
+	</GenericTile>
+
+
+    </Page>
+</mvc:View>

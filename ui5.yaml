@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "4.0"
+metadata:
+  name: vcentral
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertErrors: false
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+        backend:
+          - url: http://yawss4hsbx.sapyash.com:44301/
+            authenticationType: BasicAuthentication
+            destination: it_request
+            path: /sap
+          - url: http://yawss4hsbx.sapyash.com:44301/
+            authenticationType: BasicAuthentication
+            destination: it_request
+            path: /sap/opu/odata/sap/ZIT_REQUEST_SRV/
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        flp:
+          theme: sap_horizon

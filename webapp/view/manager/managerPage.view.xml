@@ -1,0 +1,126 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+    controllerName="vcentral.controller.manager.managerPage">
+
+<Page>
+
+    <IconTabBar id="idIconTabBar" >
+        <items>
+            <IconTabFilter text="Pending Time Sheets" key="timesheets">
+                <Table items="{PendingModel>/pendingTimesheets}">
+                    <columns>
+                        <Column><Text text="Employee ID" /></Column>
+                        <Column><Text text="Name" /></Column>
+                        <Column><Text text="Week" /></Column>
+                        <Column><Text text="Total Hours" /></Column>
+                        <Column><Text text="Status" /></Column>
+                        <Column><Text text="Actions" /></Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="{PendingModel>employeeId}" />
+                                <Text text="{PendingModel>name}" />
+                                <Text text="{PendingModel>weekLabel}" />
+                                <Text text="{PendingModel>totalWeekHours}" />
+                                <ObjectStatus text="{PendingModel>status}" state="Warning" />
+                                <HBox gap="10px">
+                                    <Button text="Approve" press=".onApprove" type="Accept" />
+                                    <Button text="Reject" press=".onReject" type="Reject" />
+                                </HBox>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </IconTabFilter>
+
+            <IconTabFilter text="Leave Approvals" key="leaves">
+    <SplitApp id="leaveSplitApp">
+        <!-- Master Page -->
+        <masterPages>
+            <Page title="Pending Leave Requests">
+                <List items="{PendingModel>/pendingLeaves}" itemPress=".onLeaveSelect">
+                    <items>
+                        <ObjectListItem
+                            title="{PendingModel>employeeId}"
+                            intro="{PendingModel>name}"
+                            number="{PendingModel>validDays}"
+                            numberUnit="days"
+                            type="Active">
+                            <firstStatus>
+                                <ObjectStatus
+                                    text="{PendingModel>status}"
+                                    state="{= ${PendingModel>status} === 'Approved' ? 'Success' 
+                                            : ${PendingModel>status} === 'Rejected' ? 'Error' 
+                                            : 'Warning'}" />
+                            </firstStatus>
+                        </ObjectListItem>
+                    </items>
+                </List>
+            </Page>
+        </masterPages>
+
+        <!-- Detail Page -->
+        <detailPages >
+            <Page id="detailLeave" visible="false" title="Leave Details" showNavButton="true" navButtonPress=".onPressDetailBack">
+                <ObjectHeader title="{PendingModel>name}" intro="{PendingModel>employeeId}">
+                    <attributes>
+                        <ObjectAttribute title="Leave Type" text="{PendingModel>leaveType}" />
+                        <ObjectAttribute title="Start Date" text="{PendingModel>startDate}" />
+                        <ObjectAttribute title="End Date" text="{PendingModel>endDate}" />
+                        <ObjectAttribute title="Valid Days" text="{PendingModel>validDays}" />
+                        <ObjectAttribute title="Reason" text="{PendingModel>reason}" />
+                    </attributes>
+                    <statuses>
+                        <ObjectStatus text="{PendingModel>status}" />
+                    </statuses>
+                </ObjectHeader>
+                
+
+                <Toolbar>
+                    <ToolbarSpacer />
+                    <Button text="Approve" type="Accept" press=".onApproveLeave" />
+                    <Button text="Reject" type="Reject" press=".onRejectLeave" />
+                </Toolbar>
+            </Page>
+        </detailPages>
+    </SplitApp>
+<!-- 
+                <Table items="{PendingModel>/pendingLeaves}" class="sapUiSmallMargin">
+                    <columns>
+                        <Column><Text text="Employee ID" /></Column>
+                        <Column><Text text="Name" /></Column>
+                        <Column><Text text="Start Date" /></Column>
+                        <Column><Text text="End Date" /></Column>
+                        <Column><Text text="Valid Days" /></Column>
+                        <Column><Text text="Status" /></Column>
+                        <Column><Text text="Actions" /></Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="{PendingModel>employeeId}" />
+                                <Text text="{PendingModel>name}" />
+                                <Text text="{PendingModel>startDate}" />
+                                <Text text="{PendingModel>endDate}" />
+                                <Text text="{PendingModel>validDays}" />
+                                <ObjectStatus text="{PendingModel>status}" state="Warning" />
+                                <HBox>
+                                    <Button text="Approve" press=".onApproveLeave" type="Accept" />
+                                    <Button text="Reject" press=".onRejectLeave" type="Reject" />
+                                </HBox>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+
+                <FlexBox direction="Column" class="sapUiSmallMargin">
+                <Text text="hi"></Text>
+                <Text text="hi"></Text>
+                <Text text="hi"></Text>
+                </FlexBox> -->
+            </IconTabFilter>
+        </items>
+    </IconTabBar>
+
+</Page>
+</mvc:View>

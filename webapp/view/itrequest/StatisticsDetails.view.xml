@@ -1,0 +1,143 @@
+<mvc:View xmlns:core="sap.ui.core" controllerName="vcentral.controller.itrequest.StatisticsDetails"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page title="Statistics Dashboard" navButtonPress="back" showNavButton="true">
+
+        <!-- Tiles -->
+        <GenericTile class="sapUiSmallMarginBegin sapUiLargeMarginTop"
+                     header="Total Requests" subheader="All time">
+            <TileContent>
+                <NumericContent value="{SummaryModel>/Total}" valueColor="Good" />
+            </TileContent>
+        </GenericTile>
+
+        <GenericTile class="sapUiSmallMarginBegin sapUiLargeMarginTop"
+                     header="Open Requests" subheader="Require Attention">
+            <TileContent>
+                <NumericContent value="{SummaryModel>/StatusCounts/0/Count}" valueColor="Critical" />
+            </TileContent>
+        </GenericTile>
+
+        <GenericTile class="sapUiSmallMarginBegin sapUiLargeMarginTop"
+                     header="In Progress" subheader="Being worked on">
+            <TileContent>
+                <NumericContent value="{SummaryModel>/StatusCounts/1/Count}" valueColor="Error" />
+            </TileContent>
+        </GenericTile>
+
+        <GenericTile class="sapUiSmallMarginBegin sapUiLargeMarginTop"
+                     header="Closed Requests" subheader="Completed">
+            <TileContent>
+                <NumericContent value="{SummaryModel>/StatusCounts/2/Count}" valueColor="Good" />
+            </TileContent>
+        </GenericTile>
+
+        <!-- Status List -->
+        <Panel headerText="Requests by Status" expanded="true" expandable="true" class="sapUiSmallMargin">
+            <List items="{SummaryModel>/StatusCounts}">
+                <CustomListItem>
+                    <HBox>
+                        <ObjectStatus text="{SummaryModel>Status}"
+                                      state="{= ${SummaryModel>Status} === 'Open' ? 'Warning' 
+                                               : ${SummaryModel>Status} === 'Closed' ? 'Success' 
+                                               : 'Information'}"
+                                      class="sapUiSmallMargin" />
+                        <Text text="{SummaryModel>Count} requests" class="sapUiSmallMargin" />
+                        <ProgressIndicator percentValue="{SummaryModel>Percent}" 
+                                           displayValue="{SummaryModel>Percent}"
+                                           width="100px"
+                                           state="{= ${SummaryModel>Status} === 'Open' ? 'Warning' 
+                                                    : ${SummaryModel>Status} === 'Closed' ? 'Success' 
+                                                    : 'Information'}" />
+                    </HBox>
+                </CustomListItem>
+            </List>
+        </Panel>
+
+        <!-- Priority List -->
+        <Panel headerText="Requests by Priority" expanded="true" expandable="true" class="sapUiSmallMargin">
+            <List items="{SummaryModel>/PriorityCounts}">
+                <CustomListItem>
+                    <HBox>
+                        <ObjectStatus text="{SummaryModel>Priority}"
+                                      state="{= ${SummaryModel>Priority} === 'Medium' ? 'Warning' 
+                                               : ${SummaryModel>Priority} === 'Low' ? 'Success' 
+                                               : 'Error'}"
+                                      class="sapUiSmallMargin" />
+                        <Text text="{SummaryModel>Count} requests" class="sapUiSmallMargin" />
+                        <ProgressIndicator percentValue="{SummaryModel>Percent}" 
+                                           displayValue="{SummaryModel>Percent}"
+                                           width="100px"
+                                           state="{= ${SummaryModel>Priority} === 'Medium' ? 'Warning' 
+                                                    : ${SummaryModel>Priority} === 'Low' ? 'Success' 
+                                                    : 'Error'}" />
+                    </HBox>
+                </CustomListItem>
+            </List>
+        </Panel>
+
+        <!-- Category List -->
+        <Panel headerText="Requests by Category" expanded="true" expandable="true" class="sapUiSmallMargin">
+            <List items="{SummaryModel>/CategoryCounts}">
+                <CustomListItem>
+                    <HBox >
+                        <ObjectStatus text="{SummaryModel>Category}"  
+                                      state="{= ${SummaryModel>Category} === 'Hardware' ? 'Error' 
+                                               : ${SummaryModel>Category} === 'Network' ? 'Success'
+                                               : ${SummaryModel>Category} === 'Access' ? 'Warning' 
+                                               : 'Information'}"
+                                      class="sapUiSmallMargin" />
+                        <Text text="{SummaryModel>Count} requests" class="sapUiSmallMargin" />
+                        <ProgressIndicator percentValue="{SummaryModel>Percent}" 
+                                           displayValue="{SummaryModel>Percent}"
+                                           width="100px"
+                                           state="{= ${SummaryModel>Category} === 'Hardware' ? 'Error' 
+                                                    : ${SummaryModel>Category} === 'Network' ? 'Success'
+                                                    : ${SummaryModel>Category} === 'Access' ? 'Warning' 
+                                                    : 'Information'}" />
+                    </HBox>
+                </CustomListItem>
+            </List>
+        </Panel>
+
+        <!-- Recent Activity -->
+        <Panel headerText="Recent Activity" expanded="true" expandable="true" class="sapUiSmallMargin">
+            <List items="{RecentModel>/recent}">
+                <CustomListItem>
+                    <VBox class="sapUiSmallMargin">
+                        <Title text="{RecentModel>RequestId}" />
+                        <Text text="{RecentModel>Description}" />
+                        <HBox>
+                            <ObjectStatus text="{RecentModel>Category}"  
+                                          state="{= ${RecentModel>Category} === 'Hardware' ? 'Error' 
+                                                   : ${RecentModel>Category} === 'Network' ? 'Success'
+                                                   : ${RecentModel>Category} === 'Access' ? 'Warning' 
+                                                   : 'Information'}"
+                                          class="sapUiTinyMargin" />
+                            <Title text="." class="sapUiTinyMargin"></Title>
+                            <ObjectStatus text="{RecentModel>Priority}" 
+                                          state="{= ${RecentModel>Priority} === 'Medium' ? 'Warning' 
+                                                   : ${RecentModel>Priority} === 'Low' ? 'Success' 
+                                                   : 'Error'}"
+                                          class="sapUiTinyMargin" />
+                            <Title text="." class="sapUiTinyMargin"></Title>
+                            <core:Icon src="sap-icon://history" class="sapUiTinyMargin"></core:Icon>
+                            <Label text="{RecentModel>hoursAgo}" class="sapUiTinyMarginTop"></Label>
+                        </HBox>
+                    </VBox>
+                </CustomListItem>
+            </List>
+        </Panel>
+
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button text="Refresh" icon="sap-icon://refresh" press=".onRefresh" />
+                <Button text="Export Stats" icon="sap-icon://excel-attachment" type="Emphasized" press=".onExport" />
+            </OverflowToolbar>
+        </footer>
+
+    </Page>
+</mvc:View>

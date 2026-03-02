@@ -1,0 +1,130 @@
+<mvc:View controllerName="vcentral.controller.users.LeaveRequest"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:u="sap.ui.unified"
+    xmlns:core="sap.ui.core">
+
+    <Page>
+        <f:SidePanel >
+            
+            <!-- 🔹 Main Content: New Request Form -->
+            <f:mainContent>
+                <VBox class="sapUiSmallMargin">
+                    <Title text="New Leave Request" level="H1" />
+                    <Label text="Employee ID: {LoginModel>/currentUser/employeeId}" class="sapUiTinyMargin" />
+                    <Button text="Leave Requests" press="leaverequest" class="sapUiTinyMargin" />
+                </VBox>
+
+                <!-- Vacation Summary Tiles -->
+                <Panel expandable="false" expanded="true">
+                    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                                 header="Total Vacations" subheader="Annual Quota" state="Loaded">
+                        <TileContent>
+                            <NumericContent value="{TimesheetModel>/currentTimesheet/annualQuota}"
+                                            icon="sap-icon://calendar" withMargin="false" />
+                        </TileContent>
+                    </GenericTile>
+                    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                                 header="Remaining" subheader="After this Request" state="Loaded">
+                        <TileContent>
+                            <NumericContent value="{TimesheetModel>/currentTimesheet/remainingAfterRequest}"
+                                            icon="sap-icon://money-bills" withMargin="false" />
+                        </TileContent>
+                    </GenericTile>
+                    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                                 header="Current Request" subheader="Days selected" state="Loaded">
+                        <TileContent>
+                            <NumericContent value="{TimesheetModel>/currentTimesheet/daysSelected}"
+                                            icon="sap-icon://date-time" withMargin="false" />
+                        </TileContent>
+                    </GenericTile>
+                </Panel>
+                <!-- Request Form -->
+                <VBox >
+                    <Panel expandable="false" expanded="true" headerText="Request Details">
+                        <FlexBox direction="Row">
+                            <FlexBox direction="Column" class="sapUiTinyMargin" width="33%">
+                                <Label text="Leave Type:" required="true" />
+                                <ComboBox id="leaveTypeCombo" selectedKey="{DraftModel>/leaveType}"
+                                         placeholder="Select Leave type" width="100%">
+                                    <core:Item key="EL" text="Earned Leave" />
+                                    <core:Item key="SL" text="Sick Leave" />
+                                </ComboBox>
+                                <Label text="Duration:" required="true" />
+                                <DateRangeSelection id="dateRange"  
+                                                    displayFormat="dd MMM yyyy"
+                                                    change="onDateRangeChange" />
+                            </FlexBox>
+
+                            <FlexBox direction="Column" width="33%" class="sapUiTinyMargin">
+                                <Label text="Reason:"  required="true" />
+                                <TextArea id="reason" value="{DraftModel>/reason}" rows="4" width="100%" />
+                            </FlexBox>
+
+                            
+                        </FlexBox>
+                    </Panel>
+                </VBox>
+            </f:mainContent>
+
+            <!--  Side Content: Pending Requests -->
+            <f:items>
+            <f:SidePanelItem icon="sap-icon://time-entry-request" text="Leave Requests">
+            <VBox >
+					<Panel expandable="true" expanded="true"  headerText="My Pending Requests">
+                    <Table items="{UserLeaveModel>/pending}">
+                        <columns>
+                        <Column><Text text="Start Date" /></Column>
+                        <Column><Text text="End Date" /></Column>
+                        <Column><Text text="Days" /></Column>
+                        <Column><Text text="Status" /></Column>
+                        </columns>
+                        <items>
+                        <ColumnListItem>
+                            <cells>
+                            <Text text="{UserLeaveModel>startDate}" />
+                            <Text text="{UserLeaveModel>endDate}" />
+                            <Text text="{UserLeaveModel>validDays}" />
+                            <Text text="{UserLeaveModel>status}" />
+                            </cells>
+                        </ColumnListItem>
+                        </items>
+                    </Table>
+                    </Panel>
+
+                    <Panel expandable="true" expanded="true" headerText="My Approved/ Rejected Requests">
+                    <Table items="{UserLeaveModel>/history}" >
+                        <columns>
+                        <Column><Text text="Start Date" /></Column>
+                        <Column><Text text="End Date" /></Column>
+                        <Column><Text text="Days" /></Column>
+                        <Column><Text text="Status" /></Column>
+                        </columns>
+                        <items>
+                        <ColumnListItem>
+                            <cells>
+                            <Text text="{UserLeaveModel>startDate}" />
+                            <Text text="{UserLeaveModel>endDate}" />
+                            <Text text="{UserLeaveModel>validDays}" />
+                            <Text text="{UserLeaveModel>status}" />
+                            </cells>
+                        </ColumnListItem>
+                        </items>
+                    </Table>
+                    </Panel>
+                </VBox>
+				</f:SidePanelItem>
+                </f:items>
+             </f:SidePanel>
+
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button text="Save As Draft" type="Transparent" press="saveDraft" />
+                <Button text="Submit" type="Emphasized" press="submit" />
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

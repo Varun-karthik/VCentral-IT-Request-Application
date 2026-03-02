@@ -1,0 +1,225 @@
+{
+  "_version": "1.76.0",
+  "sap.app": {
+    "id": "vcentral",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.20.0",
+      "toolsId": "18572373-1324-4b72-be78-14fc13b1cd93"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZIT_REQUEST_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.143.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "vcentral.i18n.i18n"
+        }
+      },
+      "RequestModel": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "vcentral.view",
+        "async": true
+      },
+      "routes": [
+        {
+          "name": "RouteView1",
+          "pattern": "VCentral",
+          "target": [
+            "TargetView1"
+          ]
+        },
+        {
+          "name": "UserHome",
+          "pattern": "UserHomePage",
+          "target": [
+            "TargetView2"
+          ]
+        },
+        {
+          "name": "Timesheet",
+          "pattern": "User/Timesheet",
+          "target": [
+            "TargetView3"
+          ]
+        },
+        {
+          "name": "ManagerDashboard",
+          "pattern": "Manager/Timesheet",
+          "target": [
+            "TargetView4"
+          ]
+        },
+        {
+          "name": "Leave",
+          "pattern": "User/LeaveRequest",
+          "target": [
+            "TargetView5"
+          ]
+        },
+        {
+          "name": "homePage",
+          "pattern": ":?query:",
+          "target": [
+            "TargetView6"
+          ]
+        },
+        {
+          "name": "Routedashboard",
+          "pattern": "ServiceDashBoard",
+          "target": [
+            "Targetdashboard"
+          ]
+        },
+        {
+          "name": "create",
+          "pattern": "Create Ticket",
+          "target": [
+            "Target7"
+          ]
+        },
+        {
+          "name": "viewRequests",
+          "pattern": "All Requests",
+          "target": [
+            "Target8"
+          ]
+        },
+        {
+          "pattern": "RequestDetail/:requestId:",
+          "name": "RequestDetail",
+          "target": "Target9"
+        },
+        {
+          "pattern": "Statistics",
+          "name": "StatisticData",
+          "target": "Target10"
+        },
+        {
+          "pattern": "Notifications",
+          "name": "notification",
+          "target": "Target11"
+        }
+      ],
+      "targets": {
+        "TargetView1": {
+          "name": "Login"
+        },
+        "TargetView2": {
+          "name": "users.userPage"
+        },
+        "TargetView3": {
+          "name": "users.Timesheet"
+        },
+        "TargetView4": {
+          "name": "manager.managerPage"
+        },
+        "TargetView5": {
+          "name": "users.LeaveRequest"
+        },
+        "TargetView6": {
+          "name": "HomePage"
+        },
+        "Targetdashboard": {
+          "name": "itrequest.dashboard"
+        },
+        "Target7": {
+          "name": "itrequest.CreateTicket"
+        },
+        "Target8": {
+          "name": "itrequest.ViewRequests"
+        },
+        "Target9": {
+          "name": "itrequest.RequestDetails"
+        },
+        "Target10": {
+          "name": "itrequest.StatisticsDetails"
+        },
+        "Target11": {
+          "name": "itrequest.NotificationPage"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "vcentral.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "vcentral"
+  }
+}

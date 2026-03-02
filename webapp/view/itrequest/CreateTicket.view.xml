@@ -1,0 +1,36 @@
+<mvc:View xmlns:core="sap.ui.core" controllerName="vcentral.controller.itrequest.CreateTicket"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page title="Create Request" showNavButton="true" navButtonPress="back">
+    <Title text="New IT Request" class="sapUiSmallMargin"></Title>
+    <FlexBox direction="Column">
+    <VBox  class="sapUiSmallMargin" >
+    <Label text="Category"></Label>
+    <ComboBox id="category">
+    <core:Item text="Hardware" key="Hardware"></core:Item>
+    <core:Item text="Software" key="Software"></core:Item>
+    <core:Item text="Access" key="Access"></core:Item>
+    <core:Item text="Network" key="Network"></core:Item>
+    </ComboBox>
+    </VBox>
+    <VBox  class="sapUiSmallMargin" >
+    <Label text="Priority"></Label>
+    <ComboBox id="priority">
+    <core:Item text="Low" key="Low"></core:Item>
+    <core:Item text="Medium" key="Medium"></core:Item>
+    <core:Item text="High" key="High"></core:Item>
+    </ComboBox>
+    </VBox>
+    <VBox  class="sapUiSmallMargin" >
+    <Label text="Description"></Label>
+    <TextArea id="description" placeholder="Describe your issue..." value="" width="100%" rows="4"></TextArea>
+    </VBox>
+    </FlexBox>
+    <footer>
+    <OverflowToolbar >
+    <Button text="Submit" type="Emphasized" class="sapUiTinyMargin" press="Submit"></Button>
+    </OverflowToolbar>
+    </footer>
+    </Page>
+</mvc:View>

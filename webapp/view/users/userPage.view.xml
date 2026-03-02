@@ -1,0 +1,353 @@
+<mvc:View xmlns:unified="sap.ui.unified" xmlns:form="sap.ui.layout.form"
+    controllerName="vcentral.controller.users.userPage"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:tnt="sap.tnt"
+    xmlns:f="sap.f"
+    xmlns:cards="sap.f.cards">
+
+    <Page>
+        <!-- Top Toolbar -->
+        <OverflowToolbar>
+            
+              <Title text="VCentral" class="sapUiTinyMarginTop" width="200px" />
+                <Button class="sapUiSmallMargin" id="collapseBtn"
+                        text="Home Section" icon="sap-icon://menu2"
+                        press=".onCollapseExpandPress" />
+                <ToolbarSpacer ></ToolbarSpacer>
+                <core:Icon src="sap-icon://customer" width="30px"></core:Icon>
+                <Text text="{LoginModel>/currentUser/name}"  />
+                <Button icon="sap-icon://log" press="logout" tooltip="Logout" ></Button>
+            
+        </OverflowToolbar>
+
+        <FlexBox direction="Row" width="100%" fitContainer="true">
+            <!-- Side Navigation -->
+             <tnt:SideNavigation id="sideNavigation">
+                <tnt:NavigationList itemSelect=".onItemSelect">
+                    <tnt:NavigationListItem text="Home " icon="sap-icon://home" key="home"  />
+                    <tnt:NavigationListItem text="Time Sheets" icon="sap-icon://away" key="timesheet">
+                        <tnt:NavigationListItem text="Submit Time Sheet" key="submitTS" />
+                    </tnt:NavigationListItem>
+                    <tnt:NavigationListItem text="Profile" icon="sap-icon://person-placeholder" key="profile" />
+                    <tnt:NavigationListItem text="Helpdesk" icon="sap-icon://sys-help" key="helpdesk" />
+                </tnt:NavigationList>
+            </tnt:SideNavigation> 
+        
+            <!-- Main Content Area -->
+
+
+                <!-- Home Section -->
+    <VBox id="homeSection" visible="true" class="sapUiSmallMargin">
+
+    <!-- Toolbar with card selector -->
+    <Toolbar>
+        <ToolbarSpacer />
+        <MultiComboBox
+        id="cardSelector"
+        width="250px"
+        selectedKeys="profile,todo,timesheet,skills,allocation"
+        selectionChange=".onCardSelectionChange">
+
+        <core:Item key="profile" text="My Profile" />
+        <core:Item key="todo" text="To-Do List" />
+        <core:Item key="timesheet" text="Timesheet Status" />
+        <core:Item key="skills" text="Skills" />
+        <core:Item key="allocation" text="My Allocation(s)" />
+    </MultiComboBox>
+
+    </Toolbar>
+
+    <!-- Top Row: Horizontal Cards -->
+    <FlexBox direction="Row" alignItems="Start" width="100%" gap="20px" justifyContent="SpaceAround" >
+
+        <!-- My Profile -->
+        <f:Card width="230px" id="MyprofileCard" visible="true" height="220px">
+            <f:header>
+                <cards:Header title="My Profile" subtitle="{LoginModel>/currentUser/designation}" />
+            </f:header>
+            <f:content>
+                <VBox class="sapUiSmallMargin" >
+                    <Title text="{LoginModel>/currentUser/name}" level="H3" />
+                    <Title text="{LoginModel>/currentUser/employeeId}" />
+                    <Text text="{LoginModel>/currentUser/designation}" />
+                    <FlexBox direction="Row"  >
+                        <Title text="IRM -" level="H1" />
+                        <Text text="{LoginModel>/currentUser/reportingManagerName}" />
+                    </FlexBox>
+                    <FlexBox direction="Row" >
+                        <Title text="Business Group -" level="H6" />
+                        <Text text="{LoginModel>/currentUser/group}" />
+                    </FlexBox>
+                    <FlexBox direction="Row"  >
+                        <Title text="Business Unit -" level="H6" />
+                        <Text text="{LoginModel>/currentUser/unit}" />
+                    </FlexBox>
+
+                </VBox>
+            </f:content>
+        </f:Card>
+
+        <!-- To-Do List -->
+        <f:Card width="230px" id="todoCard" height="220px" visible="true">
+            <f:header>
+                <cards:Header title="To-Do List" />
+            </f:header>
+            <f:content>
+                <VBox class="sapUiSmallMargin">
+                    <Text text="No tasks assigned." />
+                </VBox>
+            </f:content>
+        </f:Card>
+
+        <!-- Timesheet Status -->
+        <f:Card width="230px" id="timesheetCard" height="220px" visible="true">
+            <f:header>
+                <cards:Header title="Timesheet Status" />
+            </f:header>
+            <f:content>
+                <VBox class="sapUiSmallMargin">
+                    <Text text="19 Jan to 25 Jan: " />
+                    <Text text="12 Jan to 18 Jan: " />
+                    <Text text="05 Jan to 11 Jan: " />
+                    <Text text="29 Dec to 04 Jan: " />
+                    <Text text="22 Dec to 28 Dec: " />
+                </VBox>
+            </f:content>
+        </f:Card>
+
+        <!-- Skills -->
+        <f:Card width="230px" id="skillsCard" height="220px" visible="true">
+            <f:header>
+                <cards:Header title="Skills" />
+            </f:header>
+            <f:content>
+                <VBox class="sapUiSmallMargin">
+                    <Text text="{LoginModel>/currentUser/SkillCategory}" />
+                </VBox>
+            </f:content>
+        </f:Card>
+
+    </FlexBox>
+
+    <!-- My Allocation(s) Card -->
+    <f:Card id="allocationCard" class="sapUiSmallMarginTop" visible="true">
+        <f:header>
+            <cards:Header title="My Allocation(s)" />
+        </f:header>
+        <f:content>
+            <VBox class="sapUiSmallMargin">
+                <Text text="{LoginModel>/currentUser/allocation}" />
+            </VBox>
+        </f:content>
+    </f:Card>
+</VBox>
+
+                <!-- Other Sections -->
+ <VBox id="timesheetSection" class="sapUiSmallMargin" width="100%" visible="false">
+   <Title text="Current Week Timesheet" level="H2" />
+        <ObjectStatus text="{TimesheetModel>/currentTimesheet/weekLabel}" state="Information" />
+        
+        <Title text="Status"></Title>
+        <ObjectStatus text="{TimesheetModel>/currentTimesheet/status}"
+              state="{= ${TimesheetModel>/currentTimesheet/status} === 'Approved' ? 'Success' :
+                       ${TimesheetModel>/currentTimesheet/status} === 'Rejected' ? 'Error' :
+                       ${TimesheetModel>/currentTimesheet/status} === 'Pending' ? 'Warning' : 'Information'}" />
+        <Table id="timesheetTable"  items="{TimesheetModel>/currentTimesheet/entries}">
+            <columns>
+                <Column><Text text="Mon" /></Column>
+                <Column><Text text="Tue" /></Column>
+                <Column><Text text="Wed" /></Column>
+                <Column><Text text="Thu" /></Column>
+                <Column><Text text="Fri" /></Column>
+                <Column><Text text="Sat" /></Column>
+                <Column><Text text="Sun" /></Column>
+                <Column><Text text="Total" /></Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Input value="{TimesheetModel>hours/monday}" change=".onHoursChange" />
+                        <Input value="{TimesheetModel>hours/tuesday}" change=".onHoursChange" />
+                        <Input value="{TimesheetModel>hours/wednesday}" change=".onHoursChange" />
+                        <Input value="{TimesheetModel>hours/thursday}" change=".onHoursChange" />
+                        <Input value="{TimesheetModel>hours/friday}" change=".onHoursChange" />
+                        <Input value="{TimesheetModel>hours/saturday}" editable="false" change=".onHoursChange" />
+                        <Input value="{TimesheetModel>hours/sunday}" editable="false" change=".onHoursChange" />
+                        <Text text="{TimesheetModel>totalHours}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+
+        <HBox class="sapUiSmallMarginTop">
+            <Button text="Save Draft" press=".onSaveDraft" type="Emphasized" />
+            <Button text="Submit"
+        press=".onSubmitTimesheet"
+        type="Accept"
+         enabled="{= ${TimesheetModel>/currentTimesheet/status} === 'Draft'}"
+         />
+         <!-- enabled="{= ${TimesheetModel>/currentTimesheet/status} === 'Pending'}" -->
+        </HBox>
+    <Panel expandable="true" expanded="true" class="sapUiTinyMargin">
+    
+    </Panel>
+</VBox>
+                <!-- Profile Section -->
+                
+<VBox id="profileSection" visible="false" width="100%">
+    <Panel headerText="My Profile" expandable="true" expanded="true" width="auto">
+    <headerToolbar>
+    <Toolbar >
+    <Title text="Employee Details" /> 
+    <ToolbarSpacer /> 
+    <Button icon="sap-icon://edit" press=".onEditPress" type="Transparent" />
+    <Button icon="sap-icon://save"  press="onSave" type="Transparent" ></Button>
+    </Toolbar>
+    </headerToolbar>
+        <content>
+            
+            <!-- Employee Details Section -->
+            <form:SimpleForm >
+            <!-- <Panel headerText="Employee Details" expandable="true" expanded="true" width="auto"> -->
+                <!-- <content> -->
+                <VBox >
+                    <!-- Biographical Information -->
+                    <VBox class="sapUiTinyMargin">
+                        <Title text="Biographical Information" level="H3" class="sapUiTinyMarginBottom" />
+                        
+                            <Text text="Employee ID" width="150px" />
+                            <Input width="auto" editable="false" id="empid" value="{LoginModel>/currentUser/employeeId}"  />
+                        
+                    </VBox>
+                    <Toolbar>
+    <ToolbarSpacer />
+    <ToolbarSeparator  />
+    <ToolbarSpacer />
+</Toolbar>
+                    <!-- Personal Information -->
+                    <VBox class="sapUiTinyMargin">
+                        <Title text="Personal Information" level="H3" class="sapUiTinyMarginBottom" />
+                        
+                        
+                            <Text text="Given Name" width="200px" />
+                            <Input value="{LoginModel>/currentUser/name}" editable="false" width="auto" id="name" />
+                        
+                    </VBox>
+                    <Toolbar>
+    <ToolbarSpacer />
+    <ToolbarSeparator />
+    <ToolbarSpacer />
+</Toolbar>
+                    <!-- Contact Information -->
+                    <VBox class="sapUiTinyMargin">
+                        <Title text="Email Id" level="H3" class="sapUiTinyMarginBottom" />
+                        <Input value="{LoginModel>/currentUser/email}" id="email" width="auto" editable="false"></Input>
+                    </VBox>
+                  </VBox>  
+                <!-- </content> -->
+            <!-- </Panel> -->
+            </form:SimpleForm>
+            
+        </content>
+    </Panel>
+    <Panel expandable="true"  headerText="Skills and Certifications">
+    <Table >
+    <columns>
+    <Column >
+    <Text text="Skill ID"></Text>
+    </Column>
+    <Column >
+    <Text text="Skill Type"></Text>
+    </Column>
+    <Column >
+    <Text text="Skill Category"></Text>
+    </Column>
+    <Column >
+    <Text text="Skill Status"></Text>
+    </Column>
+    </columns>
+    <items>
+    <ColumnListItem >
+    <cells>
+    <Text text="{LoginModel>/currentUser/skillID}"></Text>
+    <Text text="{LoginModel>/currentUser/SkillType}"></Text>
+    <Text text="{LoginModel>/currentUser/SkillCategory}"></Text>
+    <Text text="{LoginModel>/currentUser/SkillStatus}"></Text>
+    </cells>
+    </ColumnListItem>
+    </items>
+    </Table>
+   
+    </Panel>
+</VBox>
+                <!-- HelpDesk -->
+
+                <!-- Helpdesk Section -->
+<VBox id="helpdeskSection" visible="false" width="100%">
+    <Panel headerText="Helpdesk Support" expandable="true" expanded="true" width="100%">
+        <content>
+            
+            <!-- Quick Contact Info -->
+            <VBox class="sapUiSmallMargin">
+                <Title text="Contact Support" level="H3" class="sapUiSmallMarginBottom" />
+                
+                <!-- IT Support -->
+                <VBox class="sapUiSmallMarginBottom">
+                    <Title text="IT Support" level="H4" class="sapUiTinyMarginBottom" />
+                    <HBox class="sapUiSmallMarginBegin">
+                        <Label text="Email:" width="80px" />
+                        <Link text="helpdesk@yash.com" href="mailto:helpdesk@yash.com" class="sapUiTinyMarginBegin" />
+                    </HBox>
+                    <HBox class="sapUiSmallMarginBegin">
+                        <Label text="Phone:" width="80px" />
+                        <Text text="+1 (555) 123-4567 (Ext: 4444)" class="sapUiTinyMarginBegin" />
+                    </HBox>
+                    <Text text="For hardware, software, and system issues" class="sapUiTinyMarginBegin sapUiTinyMarginTop" />
+                </VBox>
+                
+                <!-- HR Support -->
+                <VBox class="sapUiSmallMarginBottom">
+                    <Title text="HR Support" level="H4" class="sapUiTinyMarginBottom" />
+                    <HBox class="sapUiSmallMarginBegin">
+                        <Label text="Email:" width="80px" />
+                        <Link text="hr@yash.com" href="mailto:hr@yash.com" class="sapUiTinyMarginBegin" />
+                    </HBox>
+                    <HBox class="sapUiSmallMarginBegin">
+                        <Label text="Phone:" width="80px" />
+                        <Text text="+1 (555) 123-4568 (Ext: 5555)" class="sapUiTinyMarginBegin" />
+                    </HBox>
+                    <Text text="For payroll, leaves, and policy queries" class="sapUiTinyMarginBegin sapUiTinyMarginTop" />
+                </VBox>
+                
+                <!-- Emergency -->
+                <VBox class="sapUiSmallMarginBottom">
+                    <Title text="Emergency Contact (24x7)" level="H4" class="sapUiTinyMarginBottom" />
+                    <HBox class="sapUiSmallMarginBegin">
+                        <Label text="Hotline:" width="80px" />
+                        <Text text="+1 (800) 555-EMRG (3674)" class="sapUiTinyMarginBegin" />
+                    </HBox>
+                    <HBox class="sapUiSmallMarginBegin">
+                        <Label text="Email:" width="80px" />
+                        <Link text="emergency@yash.com" href="mailto:emergency@yash.com" class="sapUiTinyMarginBegin" />
+                    </HBox>
+                    <Text text="For critical system outages only" class="sapUiTinyMarginBegin sapUiTinyMarginTop" />
+                </VBox>
+            </VBox>
+            
+        </content>
+    </Panel>
+</VBox>
+
+            
+        </FlexBox>
+
+        <!-- <footer>
+        <Toolbar >
+        <ToolbarSpacer ></ToolbarSpacer>
+        <Button text="Logout" icon="sap-icon://log" press="logout"></Button>
+        </Toolbar>
+        </footer> -->
+    </Page>
+</mvc:View>
