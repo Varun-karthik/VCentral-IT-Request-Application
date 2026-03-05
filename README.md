@@ -6,8 +6,8 @@
 |**App Generator Version**<br>1.20.0|
 |**Generation Platform**<br>SAP Business Application Studio|
 |**Template Used**<br>Basic|
-|**Service Type**<br>None|
-|**Service URL**<br>N/A|
+|**Service Type**<br>OData|
+|**Service URL**<br>(https://YAWSS4HSBX.sapyash.com:44301/sap/opu/odata/SAP/ZIT_REQUEST_SRV/itrequestSet)
 |**Module Name**<br>vcentral|
 |**Application Title**<br>VCentral|
 |**Namespace**<br>|
